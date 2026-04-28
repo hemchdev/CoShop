@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Mens from './components/Mens';
@@ -23,9 +24,19 @@ import Womens from './components/Womens';
 import Electronics from './components/Electronics';
 import Footwear from './components/Footwear';
 import Foots from './components/Footwear';
+import keepAliveService from './services/keepAliveService';
 
 
 function App() {
+  useEffect(() => {
+    // Start keep-alive service to prevent Render free tier cold start
+    keepAliveService.start();
+
+    return () => {
+      // Cleanup: stop keep-alive when component unmounts
+      keepAliveService.stop();
+    };
+  }, []);
   return (
     <Router >
       <Header />

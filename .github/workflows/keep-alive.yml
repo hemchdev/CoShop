@@ -1,0 +1,18 @@
+name: Keep Render Free Tier Alive
+on:
+  schedule:
+    # Run every 8 minutes to ensure we ping before 15-min timeout
+    - cron: '*/8 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend to prevent cold start
+        run: |
+          curl -X GET "https://coshop-backend/api/keep-alive/" \
+            -H "Content-Type: application/json" \
+            -w "\nStatus: %{http_code}\n" \
+            -o /dev/null -s
+        continue-on-error: true
