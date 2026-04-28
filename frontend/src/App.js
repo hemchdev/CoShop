@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { useEffect } from 'react'
+import axios from 'axios'
 import Header from './components/Header'
 import Footer from './components/Footer';
 import Mens from './components/Mens';
@@ -28,6 +29,10 @@ import keepAliveService from './services/keepAliveService';
 
 
 function App() {
+  // Configure axios to use the correct API URL
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+  axios.defaults.baseURL = apiUrl;
+  
   useEffect(() => {
     // Start keep-alive service to prevent Render free tier cold start
     keepAliveService.start();

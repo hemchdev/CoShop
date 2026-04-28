@@ -124,8 +124,8 @@ CORS_ORIGINS=http://localhost:3000
 ```ini
 SECRET_KEY=[your-50-char-secret-key]
 DEBUG=False
-ALLOWED_HOSTS=coshop-backend.onrender.com
-CORS_ORIGINS=https://your-frontend.vercel.app
+ALLOWED_HOSTS=https://coshop-backend-lkbk.onrender.com/
+CORS_ORIGINS=https://coshop-frontend.vercel.app
 ```
 
 ### Frontend (Vercel Environment)
@@ -153,7 +153,9 @@ REACT_APP_API_URL=https://coshop-backend.onrender.com
 - [ ] Generate a strong SECRET_KEY
 - [ ] Set DEBUG=False
 - [ ] Update ALLOWED_HOSTS with your domain
-- [ ] Configure CORS_ORIGINS to match frontend
+- [ ] Configu
+
+re CORS_ORIGINS to match frontend
 - [ ] Test migrations run successfully
 - [ ] Push to GitHub
 
