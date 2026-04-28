@@ -70,4 +70,5 @@ class KeepAliveService {
 }
 
 // Export singleton instance
-export default new KeepAliveService();
+const keepAliveService = new KeepAliveService();
+export default keepAliveService;
